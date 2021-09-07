@@ -19,7 +19,8 @@ function generator(){
     // assign a unique ID to section for targeting later
     $(document.getElementById('section').id = sectionNumber);
     // Set the background color of the section
-    $(document. getElementById(sectionNumber). style. backgroundColor = 'red')
+        $('#'+ sectionNumber).addClass( 'red' );
+        //$(document. getElementById(sectionNumber). style. backgroundColor = 'red')
     // insert a 'change color' button.
     $(document).find('#' + sectionNumber).append(
         '<input id="changeColorButton" type="button" value="Change Color">');
@@ -57,13 +58,8 @@ function changeColor(sectionID){
     // get parent element of button (div to delete)
     let el2 = $('#'+ el).parent()
     // get id of div to delete and convert to number
-    let el3 = Number(el2[0].id);
-    // change background color from red to yellow
-    if ($("#" + el3).css('backgroundColor') === 'rgb(255, 0, 0)') {
-        $(document.getElementById(el3). style. backgroundColor = 'yellow')
-    } // end if 
-    // change background color from yellow to red
-    else if ($("#" + el3).css('backgroundColor') === 'rgb(255, 255, 0)') {
-        $(document.getElementById(el3). style. backgroundColor = 'red')
-    } // end else  
+    let el3 = (el2[0].id);
+    let el4 = $("#"+el3)
+    // toggle background of div between red and yelllow
+    el4.toggleClass( 'yellow' );
 } // end changeColor function
