@@ -50,15 +50,19 @@ function deleteSection(sectionID){
 
 // change the color function
 function changeColor(sectionID){
+    // get id number of button clicked
     let el = sectionID.target.id;
+    // get parent element of button (div to delete)
     let el2 = $('#'+ el).parent()
-    let el3 = (el2[0].id)*1;
-    if ($(document.getElementById(el3). style. backgroundColor === 'red')) {
+    // get id of div to delete and convert to number
+    let el3 = Number(el2[0].id);
+    // change background color from red to yellow
+    if ($("#" + el3).css('backgroundColor') === 'rgb(255, 0, 0)') {
         $(document.getElementById(el3). style. backgroundColor = 'yellow')
     }
-    else{
-        console.log($(document).find("#" + el3). style. backgroundColor === 'yellow')
-        //$(document.getElementById(el3). style. backgroundColor = 'red')
+    // change background color from yellow to red
+    else if ($("#" + el3).css('backgroundColor') === 'rgb(255, 255, 0)') {
+        $(document.getElementById(el3). style. backgroundColor = 'red')
     }
     
 }
