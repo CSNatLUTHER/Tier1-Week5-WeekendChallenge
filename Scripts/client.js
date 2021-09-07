@@ -22,27 +22,43 @@ function generator(){
     $(document. getElementById(sectionNumber). style. backgroundColor = 'red')
     // insert a 'change color' button.
     $(document).find('#' + sectionNumber).append(
-        '<input class="changeColorButton" type="button" value="Change Color">');
+        '<input id="changeColorButton" type="button" value="Change Color">');
+    // create uniqie ID for change color button
+    $(document.getElementById('changeColorButton').id = "changeColorButton" + sectionNumber);
     // insert a 'delete section' button.
     $(document).find('#' + sectionNumber).append(
-        '<input class="deleteDivButton" type="button" value="Delete Section">');
+        '<input id="deleteDivButton" type="button" value="Delete Section">');
+    // create uniqie ID for delete button
+    $(document.getElementById('deleteDivButton').id = "deleteDivButton" + sectionNumber);
+    // set variable for delete button id
+    let el = ("#deleteDivButton" + sectionNumber);
     // assign function to 'delete section' button.   
-    $('.deleteDivButton').on ('click', deleteSection );
+    $(el).click ( deleteSection );
     // assign function to 'change color' button.
-    $('.changeColorButton').on ('click', changeColor );
+    $('#changeColorButton' + sectionNumber).on ('click', changeColor );
     // increment the section number
     sectionNumber++
 } // end generator function
 
 
 // delete a section function
-function deleteSection(){
-    console.log("in deleteSection");
-    // $('#section'+ sectionToDelete).empty();
+function deleteSection(sectionID){
+    let el = sectionID.target.id;
+    let el2 = $('#'+ el).parent()
+    $(el2[0]).empty()
 }
 
 // change the color function
-function changeColor(){
-    console.log("in changeColor");
-    // $('#section'+ sectionToDelete).empty();
+function changeColor(sectionID){
+    let el = sectionID.target.id;
+    let el2 = $('#'+ el).parent()
+    let el3 = (el2[0].id)*1;
+    if ($(document.getElementById(el3). style. backgroundColor === 'red')) {
+        $(document.getElementById(el3). style. backgroundColor = 'yellow')
+    }
+    else{
+        console.log($(document).find("#" + el3). style. backgroundColor === 'yellow')
+        //$(document.getElementById(el3). style. backgroundColor = 'red')
+    }
+    
 }
