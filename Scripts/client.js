@@ -35,7 +35,9 @@ function generator(){
     // assign function to 'delete section' button.   
     $(el).click ( deleteSection );
     // assign function to 'change color' button.
-    $('#changeColorButton' + sectionNumber).on ('click', changeColor );
+    // set variable for delete button id
+    let el2 = ("#changeColorButton" + sectionNumber);
+    $(el2).click ( changeColor );
     // increment the section number
     sectionNumber++
 } // end generator function
@@ -59,10 +61,9 @@ function changeColor(sectionID){
     // change background color from red to yellow
     if ($("#" + el3).css('backgroundColor') === 'rgb(255, 0, 0)') {
         $(document.getElementById(el3). style. backgroundColor = 'yellow')
-    }
+    } // end if 
     // change background color from yellow to red
     else if ($("#" + el3).css('backgroundColor') === 'rgb(255, 255, 0)') {
         $(document.getElementById(el3). style. backgroundColor = 'red')
-    }
-    
-}
+    } // end else  
+} // end changeColor function
